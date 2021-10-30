@@ -6,7 +6,7 @@ android {
     compileSdk 31
 
     defaultConfig {
-        applicationId "com.example.twoactivities"
+        applicationId "com.example.lifecycle"
         minSdk 21
         targetSdk 31
         versionCode 1

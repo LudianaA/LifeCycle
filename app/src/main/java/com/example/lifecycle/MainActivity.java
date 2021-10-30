@@ -1,4 +1,4 @@
-package com.example.twoactivities;
+package com.example.lifecycle;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -9,12 +9,14 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import lifecycle.R;
+
 public class MainActivity extends AppCompatActivity {
     private EditText mMessageEditText;
     private static final String LOG_TAG =
             MainActivity.class.getSimpleName();
     public static final String EXTRA_MESSAGE =
-            "com.example.android.twoactivities.extra.MESSAGE";
+            "com.example.android.lifecycle.extra.MESSAGE";
     public static final int TEXT_REQUEST = 1;
     private TextView mReplyHeadTextView;
     private TextView mReplyTextView;
@@ -22,9 +24,12 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        Log.d(LOG_TAG, "-------");
+        Log.d(LOG_TAG, "onCreate");
         mMessageEditText = findViewById(R.id.editText_main);
         mReplyHeadTextView = findViewById(R.id.text_header_reply);
         mReplyTextView = findViewById(R.id.text_message_reply);
+
     }
 
     public void launchSecondActivity(View view) {
@@ -48,5 +53,38 @@ public class MainActivity extends AppCompatActivity {
             }
         }
     }
-    // task 4
+    @Override
+    public void onStart(){
+        super.onStart();
+        Log.d(LOG_TAG, "onStart");
+    }
+    @Override
+    protected void onPause() {
+        super.onPause();
+        Log.d(LOG_TAG, "onPause");
+    }
+
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        Log.d(LOG_TAG, "onRestart");
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Log.d(LOG_TAG, "onResume");
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        Log.d(LOG_TAG, "onStop");
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        Log.d(LOG_TAG, "onDestroy");
+    }
 }
